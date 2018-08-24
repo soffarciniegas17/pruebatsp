@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="300dp"
     android:layout_height="wrap_content"
@@ -7,18 +8,19 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="170dp"
         android:orientation="vertical"
         android:background="@color/colorPrimary"
 
         >
-        <TextView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
+        <ImageButton
+            android:id="@+id/menu_funciones_cerrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginBottom="40dp"
-            android:layout_marginRight="20dp"
-            android:text="x"
+            android:layout_margin="10dp"
+            android:background="@drawable/icono_cancel"
+            android:textColor="@android:color/white"
             android:textSize="22sp"/>
 
     <ImageView
@@ -29,6 +31,7 @@
         android:src="@drawable/icon_document_white"
         />
         <com.worldsills.tspmobile.TextViewMelo
+            android:id="@+id/menu_funciones_nombre_proyect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
@@ -37,5 +40,55 @@
             android:gravity="center"/>
 
     </LinearLayout>
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardElevation="10dp"
+
+        >
+    <Button
+        android:id="@+id/menu_funciones_bton_time_log"
+        android:background="@color/colorPrimary"
+        android:layout_width="200dp"
+        android:textColor="@android:color/white"
+        android:text="TIME LOG"
+        android:layout_height="50dp" />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardElevation="10dp"
+
+        >
+        <Button
+            android:id="@+id/menu_funciones_bton_defect_log"
+            android:background="@color/colorPrimary"
+            android:layout_width="200dp"
+            android:textColor="@android:color/white"
+            android:text="DEFECT LOG"
+            android:layout_height="50dp" />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardElevation="10dp"
+
+        >
+        <Button
+            android:id="@+id/menu_funciones_bton_primary_sumary"
+            android:background="@color/colorPrimary"
+            android:layout_width="200dp"
+            android:textColor="@android:color/white"
+            android:text="PRIMARY SUMARY"
+            android:layout_height="50dp" />
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>
