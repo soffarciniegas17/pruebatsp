@@ -50,7 +50,8 @@ public class Home extends AppCompatActivity {
 
             if(cursor.moveToFirst()){
                 do {
-                    list.add(new ItemProyecto(cursor.getString(0)));
+
+                    list.add(new ItemProyecto(cursor.getString(1),cursor.getInt(0)));
                 }while (cursor.moveToNext());
             }
 
