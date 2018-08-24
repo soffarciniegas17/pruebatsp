@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    card_view:cardUseCompatPadding="true"
+    card_view:cardElevation="12dp">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:orientation="vertical"
+    android:layout_width="180dp"
+    android:gravity="center"
+    android:background="@color/colorPrimaryDark"
+    android:layout_height="180dp">
+
+    <com.worldsills.tspmobile.TextViewMelo
+        android:id="@+id/item_information_phase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PHASE"
+        android:textSize="32sp"
+        android:textStyle="bold"
+
+        android:textColor="@android:color/white"/>
+
+    <com.worldsills.tspmobile.TextViewMelo
+        android:id="@+id/item_information_porcentaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100%"
+        android:textSize="22dp"
+        android:textColor="@android:color/white"/>
+
+
+
+</LinearLayout>
+</android.support.v7.widget.CardView>
