@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
@@ -213,6 +214,47 @@ public class FragmentFull extends Fragment {
         }
         return totalDefect;
 
+
+    }
+
+    public void abreMenuFunciones(){
+        final Dialog dialogMenu=new Dialog(getActivity());
+        dialogMenu.setContentView(R.layout.dialog_menu_funciones);
+        dialogMenu.setCanceledOnTouchOutside(false);
+        dialogMenu.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        TextViewMelo nombreProyec=dialogMenu.findViewById(R.id.menu_funciones_nombre_proyect);
+        Button btonTimeLog, btonDefecLog, btonSumary;
+
+        btonTimeLog=dialogMenu.findViewById(R.id.menu_funciones_bton_time_log);
+        btonDefecLog=dialogMenu.findViewById(R.id.menu_funciones_bton_defect_log);
+        btonSumary=dialogMenu.findViewById(R.id.menu_funciones_bton_primary_sumary);
+        ImageButton btonSalir=dialogMenu.findViewById(R.id.menu_funciones_cerrar);
+
+        btonTimeLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btonDefecLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btonSumary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btonSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogMenu.dismiss();
+            }
+        });
     }
 
 }
