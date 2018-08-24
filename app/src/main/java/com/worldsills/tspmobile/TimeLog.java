@@ -97,6 +97,7 @@ public class TimeLog extends AppCompatActivity {
         chronometer.stop();
         chronometer=null;
 
+        FechaF= FechaFinal.getText().toString();
 
         Intent intent= new Intent(this, Servicio.class);
         stopService(intent);
@@ -112,7 +113,7 @@ public class TimeLog extends AppCompatActivity {
     public void guarda(View view) {
         coments= comentarios.getText().toString();
 
-        TextView t1, t2, t3 ,t4, t5, t6;
+      final  TextView t1, t2, t3 ,t4, t5, t6;
         t1= dialogTime.findViewById(R.id.t1);
         t2= dialogTime.findViewById(R.id.t2);
         t3= dialogTime.findViewById(R.id.t3);
@@ -132,6 +133,15 @@ public class TimeLog extends AppCompatActivity {
         t6.setText("Comentarios "+coments);
 
         Button cerrar = dialogTime.findViewById(R.id.salir);
+
+        cerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        dialogTime.show();
 
     }
 }
