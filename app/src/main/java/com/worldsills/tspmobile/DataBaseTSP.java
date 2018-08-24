@@ -52,30 +52,39 @@ public class DataBaseTSP extends SQLiteOpenHelper {
 
 
     }
-    public Cursor proyecto(String nombre, int accion, int tiempo, String idProyect){
+    public Cursor proyecto(int accion, String nombre, int tiempo, String idProyect){
         SQLiteDatabase db;
         ContentValues valores = new ContentValues();
         Cursor cursor=null;
 
-        if (accion==1) {
-            db=getWritableDatabase();
-            valores.put("CODPROYEC", nombre);
-            db.insert("PROYECTOS", null, valores);
-        }else if (accion==2){
-            db=getReadableDatabase();
-            try {
-                cursor=db.rawQuery("SELECT * FROM PROYECTOS",null);
-            }catch (Exception e){}
 
-        }else{
-            db=getWritableDatabase();
-            valores.put("TIEMPOTOTAL",tiempo);
-            try {
-                String whereClouse = "CODPROYEC" + " = LIKE ";
-                String[] whereArs = {idProyect};
-                db.update("PROYECTOS", valores, whereClouse, whereArs);
-            }catch (Exception e){}
-        }
+        try {
+            switch (accion){
+                case 1:
+                    db=getWritableDatabase();
+                    valores.put("NOMPROYECT", nombre);
+                    db.insert("PROYECTOS", null, valores);
+                    break;
+                case 2:
+                    db=getReadableDatabase();
+
+                    String selection="CODPROYEC" + " = ? ";
+                    String[] selectionArgs={idProyect};
+                    cursor=db.query("PROYECTOS",null,selection,selectionArgs,null,null,null);
+                    break;
+                default:
+                    db=getWritableDatabase();
+                    valores.put("TIEMPOTOTAL",tiempo);
+
+                    String whereClouse = "CODPROYEC" + " = LIKE ";
+                    String[] whereArs = {idProyect};
+                    db.update("PROYECTOS", valores, whereClouse, whereArs);
+                    break;
+            }
+
+        }catch (Exception e){}
+
+
         return cursor;
     }
 
