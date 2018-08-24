@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".PlanSumary"
+            android:label="@string/title_activity_plan_sumary"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".TimeLog" />
+        <activity android:name=".DefectLog"></activity>
     </application>
 
 </manifest>
