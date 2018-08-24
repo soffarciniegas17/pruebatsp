@@ -66,6 +66,7 @@
                 />
 
             <Button
+                android:onClick="iniciarFase"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="left"
@@ -92,6 +93,7 @@
                 />
 
             <Button
+                android:onClick="agregar"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="left"
@@ -121,6 +123,7 @@
             <Button
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:onClick="detenerFase"
                 android:layout_gravity="left"
                 android:layout_marginLeft="30dp"
                 android:background="@drawable/icono_reloj" />
@@ -156,16 +159,21 @@
 
 
             <Button
+                android:onClick="guarda"
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:text="Guardar"
                 android:textSize="15dp"
+                android:id="@+id/save"
                 android:background="@android:color/white"
                 android:textColor="@color/azulbase"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content" />
 
-
+        <Chronometer
+            android:id="@+id/cronotime"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
     </LinearLayout>
 
 </ScrollView>

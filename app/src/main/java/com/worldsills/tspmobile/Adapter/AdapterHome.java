@@ -20,6 +20,11 @@ public class AdapterHome extends BaseAdapter {
     private int plantilla;
     private ArrayList<ItemProyecto> list;
 
+    public AdapterHome(Context context, int plantilla, ArrayList<ItemProyecto> list) {
+        this.context = context;
+        this.plantilla = plantilla;
+        this.list = list;
+    }
 
     @Override
     public int getCount() {

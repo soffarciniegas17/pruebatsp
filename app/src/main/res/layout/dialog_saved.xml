@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="350dp"
+    android:layout_height="390dp"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:background="@color/azulbase"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/salir"
+            android:layout_gravity="end"
+            android:background="@drawable/icono_cancel"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            />
+
+        <ImageView
+            android:layout_gravity="center"
+            android:src="@drawable/icono_save"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+
+        <com.worldsills.tspmobile.TextViewMelo
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="35dp"
+            android:text="SAVED"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/t1"
+        android:textSize="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/t2"
+        android:textSize="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:id="@+id/t3"
+        android:textSize="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/t4"
+        android:textSize="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/t5"
+        android:textSize="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/t6"
+        android:textSize="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
