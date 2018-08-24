@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:height="40dp"
+        android:width="40dp">
+
+
+        <shape >
+            <corners android:radius="30dp"/>
+            <solid android:color="@color/azulbase"/>
+        </shape>
+    </item>
+
+
+    <item android:drawable="@drawable/icono_sent"
+        android:width="25dp"
+        android:gravity="center"
+        android:height="25dp"/>
+</layer-list>

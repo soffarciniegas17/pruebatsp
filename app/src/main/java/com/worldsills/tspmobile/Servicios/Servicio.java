@@ -1,11 +1,18 @@
 package com.worldsills.tspmobile.Servicios;
 
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NotificationCompat;
 
+import com.worldsills.tspmobile.DefectLog;
+import com.worldsills.tspmobile.R;
 import com.worldsills.tspmobile.TimeLog;
+
+
 
 public class Servicio extends Service {
     @Nullable
@@ -26,7 +33,19 @@ public class Servicio extends Service {
         } else {
             intentNoti= new Intent(this, DefectLog.class);
         }
-        return super.onStartCommand(intent, flags, startId);
+
+        PendingIntent pendingIntent= PendingIntent.getActivity(this, 0, intentNoti, 0);
+
+        Notification notification= new NotificationCompat.Builder(this, App.CHANNEL)
+                .setContentTitle("Iniciaste una fase ").setSmallIcon(R.drawable.icono_reloj)
+                .setContentText("El tiempo de una fase esta corriendo").setColor(getResources().getColor(R.color.azulbase))
+                .setContentIntent(pendingIntent)
+                .build();
+
+        startForeground(1, notification);
+
+
+        return START_NOT_STICKY;
     }
 
     @Override

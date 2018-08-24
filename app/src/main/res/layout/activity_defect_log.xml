@@ -1,9 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DefectLog">
 
-</android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <com.worldsills.tspmobile.TextViewMelo
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Defect Log"
+            android:textAlignment="center"
+            android:textSize="30dp"
+            android:background="@color/azulbase"
+            android:textColor="@android:color/white" />
+
+
+        <android.support.v7.widget.CardView
+            android:elevation="10dp"
+            android:layout_marginTop="20dp"
+            app:cardElevation="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+
+            <Spinner
+                android:id="@+id/spinnerdefect"
+                android:layout_width="200dp"
+                android:layout_height="41dp"
+                android:layout_gravity="center" />
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/icono_document" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:elevation="10dp"
+            android:layout_marginTop="20dp"
+            app:cardElevation="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+
+            <TextView
+                android:id="@+id/fechaI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:layout_gravity="center"
+                android:hint="Pulse el boton para \n iniciar la fase"
+                />
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/icono_date" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:elevation="10dp"
+            android:layout_marginTop="20dp"
+            app:cardElevation="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+
+            <Spinner
+                android:id="@+id/spinnerremove"
+                android:layout_width="200dp"
+                android:layout_height="41dp"
+                android:layout_gravity="center" />
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/icono_removed" />
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:elevation="10dp"
+            android:layout_marginTop="20dp"
+            app:cardElevation="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+
+            <Spinner
+                android:id="@+id/spinerinjected"
+                android:layout_width="200dp"
+                android:layout_height="41dp"
+                android:layout_gravity="center" />
+
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/icono_injectesd" />
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:elevation="10dp"
+            android:layout_marginTop="20dp"
+            app:cardElevation="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="130dp">
+
+            <Chronometer
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:textSize="30dp"/>
+
+            <EditText
+                android:id="@+id/oo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:layout_gravity="center"
+                android:hint="Agrega comentarios"
+                />
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/icono_reloj" />
+
+        </android.support.v7.widget.CardView>
+
+
+
+        <android.support.v7.widget.CardView
+            android:elevation="10dp"
+            android:layout_marginTop="20dp"
+            app:cardElevation="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+
+            <EditText
+                android:id="@+id/comentarios"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:layout_gravity="center"
+                android:hint="Agrega comentarios"
+                />
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/icono_coments" />
+
+        </android.support.v7.widget.CardView>
+
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:text="Guardar"
+            android:textSize="15dp"
+            android:background="@android:color/white"
+            android:textColor="@color/azulbase"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</ScrollView>
