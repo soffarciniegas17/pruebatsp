@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary"
+
+        >
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_gravity="end"
+            android:layout_marginBottom="40dp"
+            android:layout_marginRight="20dp"
+            android:text="x"
+            android:textSize="22sp"/>
+
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+
+        android:src="@drawable/icon_document_white"
+        />
+        <com.worldsills.tspmobile.TextViewMelo
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:text="nombre proyecto"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+</LinearLayout>

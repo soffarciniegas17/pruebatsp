@@ -52,7 +52,7 @@ public class DataBaseTSP extends SQLiteOpenHelper {
 
 
     }
-    public Cursor proyecto(int accion, String nombre, int tiempo, String idProyect){
+    public Cursor proyecto(int accion, String nombre, String tiempo, String idProyect){
         SQLiteDatabase db;
         ContentValues valores = new ContentValues();
         Cursor cursor=null;

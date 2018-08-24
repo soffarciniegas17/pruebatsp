@@ -18,9 +18,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PlanSumary extends AppCompatActivity {
 
+    private int codigo;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -40,6 +42,13 @@ public class PlanSumary extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_sumary);
+
+        Bundle datos=getIntent().getExtras();
+        if (datos!=null){
+            codigo=datos.getInt("codigo");
+        }else{
+            Toast.makeText(this,"sin codigo",Toast.LENGTH_SHORT).show();
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -137,9 +146,14 @@ public class PlanSumary extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+
+            Fragment frag=new FragmentFull();
+            Bundle datosE=new Bundle();
+            datosE.putInt("CODPROYEC",codigo);
+            datosE.putInt("POSICION",position);
+            frag.setArguments(datosE);
+
+            return frag;
         }
 
         @Override
