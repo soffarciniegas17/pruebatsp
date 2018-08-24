@@ -25,23 +25,21 @@
         <android.support.v7.widget.CardView
             android:layout_marginLeft="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_gravity="end"
             android:elevation="10dp"
             app:cardCornerRadius="10dp"
             app:cardElevation="10dp">
 
-            <EditText
-                android:id="@+id/name"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:hint="Crear nuevo proyecto" />
+            <TextView
 
-            <Button
-                android:layout_width="42dp"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/onclick"
+                android:layout_width="300dp"
+                android:textSize="20dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="310dp"
-                android:background="@drawable/circle" />
+                android:hint="  Crear nuevo proyecto" />
+
         </android.support.v7.widget.CardView>
 
 

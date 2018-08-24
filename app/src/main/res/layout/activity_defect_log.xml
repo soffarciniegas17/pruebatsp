@@ -126,7 +126,7 @@
             android:layout_marginTop="20dp"
             app:cardElevation="10dp"
             android:layout_width="match_parent"
-            android:layout_height="130dp">
+            android:layout_height="150dp">
 
             <Chronometer
                 android:layout_width="wrap_content"
@@ -134,14 +134,39 @@
                 android:layout_height="wrap_content"
                 android:textSize="30dp"/>
 
-            <EditText
+            <TextView
                 android:id="@+id/oo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:layout_gravity="center"
-                android:hint="Agrega comentarios"
+                android:textSize="20dp"
+                android:layout_gravity="center_horizontal"
+                android:hint="Fix time "
                 />
+
+            <Button
+                android:background="@drawable/icono_stop"
+                android:id="@+id/stop"
+                android:layout_marginTop="95dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+
+            <Button
+                android:layout_marginLeft="90dp"
+                android:id="@+id/start"
+                android:background="@drawable/icono_play"
+                android:layout_marginTop="95dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+            <Button
+                android:id="@+id/restaurar"
+                android:layout_marginTop="95dp"
+                android:background="@drawable/icono_restaurar"
+                android:layout_marginLeft="240dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
 
             <Button
                 android:layout_width="60dp"

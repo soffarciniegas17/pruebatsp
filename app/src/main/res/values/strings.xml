@@ -16,4 +16,20 @@
         <item>UT</item>
         <item>PM</item>
     </string-array>
+
+
+    <string-array name="tipos_defectos">
+        <item>DOCUMENTATION</item>
+        <item>SYNTAX</item>
+        <item>BUILD</item>
+        <item>PACKAGE</item>
+        <item>ASSIGMENT</item>
+        <item>INTERFACE</item>
+        <item>CHEKING</item>
+        <item>DATA</item>
+        <item>FUNTION</item>
+        <item>SYSTEM</item>
+        <item>ENVIRIOMENT</item>
+
+    </string-array>
 </resources>

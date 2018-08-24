@@ -13,7 +13,7 @@ public class DataBaseTSP extends SQLiteOpenHelper {
     private static final int VERSION=1;
 
 
-    private static final String TABLA_PROYECTOS="CREATE TABLE PROYECTOS(CODPROYEC INTEGER PRIMARY KEY," +
+    private static final String TABLA_PROYECTOS="CREATE TABLE PROYECTOS(CODPROYEC INTEGER PRIMARY KEY AUTOINCREMENT," +
             "NOMPROYECT TEXT, TIEMPOTOTAL INTEGER)";
 
     private static final String TABLA_TIME_LOG="CREATE TABLE TIMELOG(ID INTEGER PRIMARY KEY AUTOINCREMENT," +
