@@ -1,6 +1,9 @@
 package com.worldsills.tspmobile;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +31,8 @@ public class TimeLog extends AppCompatActivity {
     TextView fechaInicio, FechaFinal;
     private int interruption, delta, id_pro;
     EditText comentarios, interrup;
+    private boolean modo;
+
     Dialog dialogTime;
 
     @Override
@@ -40,7 +45,7 @@ public class TimeLog extends AppCompatActivity {
         comentarios= findViewById(R.id.comentarios);
         interrup= findViewById(R.id.interrupciones);
 
-        ArrayAdapter<CharSequence> arrayAdapter= ArrayAdapter.createFromResource(this,R.array.fases, android.R.layout.activity_list_item);
+        @SuppressLint("ResourceType") ArrayAdapter<CharSequence> arrayAdapter= new ArrayAdapter<CharSequence>(this, android.R.layout.activity_list_item, getResources().getStringArray(R.array.fases));
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(arrayAdapter);
 
@@ -73,6 +78,7 @@ public class TimeLog extends AppCompatActivity {
 
 
     public void iniciarFase(View view) {
+        modo=true;
         chronometer.start();
         Intent iniciarServicio = new Intent(this, Servicio.class);
         iniciarServicio.putExtra("actividad", 1);
@@ -96,7 +102,7 @@ public class TimeLog extends AppCompatActivity {
     public void detenerFase(View view) {
         chronometer.stop();
         chronometer=null;
-
+        modo=false;
         FechaF= FechaFinal.getText().toString();
 
         Intent intent= new Intent(this, Servicio.class);
@@ -137,11 +143,34 @@ public class TimeLog extends AppCompatActivity {
         cerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                fechaInicio.setText("");
+                FechaFinal.setText("");
+                comentarios.setText("");
+                interrup.setText("");
             }
         });
 
         dialogTime.show();
 
+    }
+
+    public void volver(View view) {
+       if(modo){
+           final AlertDialog alertDialog= new AlertDialog.Builder(this).create();
+           alertDialog.setTitle("ERROR");
+           alertDialog.setMessage("La fase sigue corriendo, no puede acceder a otros proyectos");
+           alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+               @Override
+               public void onClick(DialogInterface dialog, int which) {
+                   alertDialog.dismiss();
+               }
+           });
+
+           alertDialog.show();
+       } else {
+           Intent intent= new Intent(this, Home.class);
+           startActivity(intent);
+           finish();
+       }
     }
 }

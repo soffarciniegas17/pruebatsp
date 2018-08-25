@@ -24,6 +24,8 @@
         <activity android:name=".TimeLog" />
         <activity android:name=".DefectLog" />
         <activity android:name=".Home"></activity>
+
+        <service android:name=".Servicios.Servicio"/>
     </application>
 
 </manifest>

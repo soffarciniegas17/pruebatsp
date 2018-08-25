@@ -25,7 +25,7 @@ public class TextViewMelo extends TextView {
     }
 
     public void addFont(Context context){
-        Typeface typeface=getFont(context,"tsp_font.ttf");
+        Typeface typeface=getFont(context,"Signatra.ttf");
     }
 
 

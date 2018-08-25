@@ -30,7 +30,7 @@
 
         android:src="@drawable/icon_document_white"
         />
-        <com.worldsills.tspmobile.TextViewMelo
+        <TextView
             android:id="@+id/menu_funciones_nombre_proyect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

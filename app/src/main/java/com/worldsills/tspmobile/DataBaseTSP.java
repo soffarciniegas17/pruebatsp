@@ -68,9 +68,10 @@ public class DataBaseTSP extends SQLiteOpenHelper {
                 case 2:
                     db=getReadableDatabase();
 
-                    String selection="CODPROYEC" + " = ? ";
-                    String[] selectionArgs={idProyect};
-                    cursor=db.query("PROYECTOS",null,selection,selectionArgs,null,null,null);
+                    String find[] ={"CODPROYEC", "NOMPROYECT"};
+                    /*String selection="CODPROYEC" + " = ? ";
+                    String[] selectionArgs={idProyect};*/
+                    cursor=db.query("PROYECTOS",find,null,null,null,null,null);
                     break;
                 default:
                     db=getWritableDatabase();

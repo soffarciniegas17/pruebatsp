@@ -21,6 +21,12 @@ public class Servicio extends Service {
         return null;
     }
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
+
+
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
