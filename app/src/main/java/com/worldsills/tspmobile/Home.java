@@ -58,7 +58,7 @@ public class Home extends AppCompatActivity {
         try {
             adapter = new AdapterHome(this, R.layout.item_proyecto, list);
 
-            Cursor cursor= dataBaseTSP.proyecto(2, "", "0", "");
+            Cursor cursor= dataBaseTSP.proyecto(2, "", 0, "");
 
             if(cursor.moveToFirst()){
                 do {
@@ -121,7 +121,7 @@ public class Home extends AppCompatActivity {
 
                         } else {
                             DataBaseTSP dataBaseTSP= new DataBaseTSP(Home.this);
-                            dataBaseTSP.proyecto(1, nombre_proyecto, "0", "");
+                            dataBaseTSP.proyecto(1, nombre_proyecto, 0, "");
                             Toast.makeText(Home.this, "CREO PROYECTO", Toast.LENGTH_SHORT).show();
                             cargar();
                             editText.setText("");

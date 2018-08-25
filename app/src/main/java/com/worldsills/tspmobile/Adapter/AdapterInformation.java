@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.worldsills.tspmobile.Modelos.ItemInformation;
 import com.worldsills.tspmobile.R;
@@ -64,12 +65,12 @@ public class AdapterInformation extends BaseAdapter {
         ItemInformation item=informations.get(position);
 
         holder.phase.setText(item.getPhase());
-        holder.phase.setText(String.format("%.f2",item.getPorcentaje()));
+        holder.porcentaje.setText(String.format("%.2f",item.getPorcentaje()));
 
 
         return row;
     }
     class Holder{
-        TextViewMelo phase, porcentaje;
+        TextView phase, porcentaje;
     }
 }

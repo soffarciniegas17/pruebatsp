@@ -22,6 +22,7 @@ import com.worldsills.tspmobile.Servicios.Servicio;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DefectLog extends AppCompatActivity {
@@ -57,11 +58,6 @@ public class DefectLog extends AppCompatActivity {
 
         cronometro= findViewById(R.id.cronoDefect);
 
-        ArrayAdapter<CharSequence> arrayAdapter= ArrayAdapter.createFromResource(this,R.array.fases, android.R.layout.activity_list_item);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-
-        ArrayAdapter<CharSequence> arrayAdapteer= ArrayAdapter.createFromResource(this, R.array.tipos_defectos, android.R.layout.activity_list_item);
-        arrayAdapteer.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
 
         Bundle bundle= getIntent().getExtras();
         id_proD=bundle.getInt("CODIGO");
@@ -76,7 +72,7 @@ public class DefectLog extends AppCompatActivity {
         spinerR.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                faseR= parent.getItemAtPosition(position).toString();
+                faseR= spinerR.getAdapter().getItem(position).toString();
             }
 
             @Override
@@ -90,7 +86,7 @@ public class DefectLog extends AppCompatActivity {
         spinerI.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                faseI= parent.getItemAtPosition(position).toString();
+                faseI= spinerI.getAdapter().getItem(position).toString();
             }
 
             @Override
@@ -105,7 +101,7 @@ public class DefectLog extends AppCompatActivity {
         spinnerT.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                tipo= parent.getItemAtPosition(position).toString();
+                tipo= spinnerT.getAdapter().getItem(position).toString();
             }
 
             @Override
@@ -155,9 +151,15 @@ public class DefectLog extends AppCompatActivity {
     private int total=0;
     public void iniciarF(View view) {
 
-        DateFormat format= new SimpleDateFormat("HH:MM:SS DD/MM/YYYY");
+        /*DateFormat format= new SimpleDateFormat("HH:MM:SS DD/MM/YYYY");
         Date dataf = new Date();
-        fecha= format.format(dataf);
+        fecha= format.format(dataf);*/
+        Calendar fechaInicial=Calendar.getInstance();
+        fecha=fechaInicial.get(Calendar.DAY_OF_MONTH)+"/"+
+                fechaInicial.get(Calendar.MONTH)+"/"+
+                fechaInicial.get(Calendar.YEAR)+" HOUR: "+
+                fechaInicial.get(Calendar.HOUR_OF_DAY)+":"+
+                fechaInicial.get(Calendar.MINUTE);
 
         date.setText(fecha);
 

@@ -16,11 +16,13 @@ import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.worldsills.tspmobile.Servicios.Servicio;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class TimeLog extends AppCompatActivity {
@@ -45,9 +47,6 @@ public class TimeLog extends AppCompatActivity {
         comentarios= findViewById(R.id.comentarios);
         interrup= findViewById(R.id.interrupciones);
 
-        @SuppressLint("ResourceType") ArrayAdapter<CharSequence> arrayAdapter= new ArrayAdapter<CharSequence>(this, android.R.layout.activity_list_item, getResources().getStringArray(R.array.fases));
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spinner.setAdapter(arrayAdapter);
 
         chronometer= findViewById(R.id.cronotime);
 
@@ -66,7 +65,7 @@ public class TimeLog extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                fase= parent.getItemAtPosition(position).toString();
+                fase=spinner.getAdapter().getItem(position).toString();
             }
 
             @Override
@@ -84,11 +83,20 @@ public class TimeLog extends AppCompatActivity {
         iniciarServicio.putExtra("actividad", 1);
         startService(iniciarServicio);
 
-        DateFormat format= new SimpleDateFormat("HH:MM:SS DD/MM/YYYY");
+        /*DateFormat format= new SimpleDateFormat("HH:MM:SS DD/MM/YYYY");
         Date date = new Date();
-        FechaI= format.format(date);
+        FechaI= format.format(date);*/
 
-        fechaInicio.setText(FechaI);
+        Calendar fechaInicial=Calendar.getInstance();
+        FechaF=fechaInicial.get(Calendar.DAY_OF_MONTH)+"/"+
+                fechaInicial.get(Calendar.MONTH)+"/"+
+                fechaInicial.get(Calendar.YEAR)+" HOUR: "+
+                fechaInicial.get(Calendar.HOUR_OF_DAY)+":"+
+                fechaInicial.get(Calendar.MINUTE);
+
+
+        fechaInicio=findViewById(R.id.fechaI);
+        fechaInicio.setText(FechaF);
 
     }
 
@@ -103,15 +111,26 @@ public class TimeLog extends AppCompatActivity {
         chronometer.stop();
         chronometer=null;
         modo=false;
-        FechaF= FechaFinal.getText().toString();
+
+        Calendar fechaInicial=Calendar.getInstance();
+        FechaF=fechaInicial.get(Calendar.DAY_OF_MONTH)+"/"+
+                fechaInicial.get(Calendar.MONTH)+"/"+
+                fechaInicial.get(Calendar.YEAR)+" HOUR: "+
+                fechaInicial.get(Calendar.HOUR_OF_DAY)+":"+
+                fechaInicial.get(Calendar.MINUTE);
+
+        FechaFinal=findViewById(R.id.fechaF);
+         FechaFinal.setText(FechaF);
 
         Intent intent= new Intent(this, Servicio.class);
         stopService(intent);
 
+        chronometer= findViewById(R.id.cronotime);
 
-        Long elapsed= chronometer.getBase() - SystemClock.elapsedRealtime();
-        int tiempo= (int) (elapsed/1000)/60;
-        delta= (tiempo-interruption);
+        delta=(int) ((chronometer.getBase() - SystemClock.elapsedRealtime())/1000/60)-interruption;
+        Toast.makeText(this,delta+"",Toast.LENGTH_LONG).show();
+        //int tiempo= (int) (elapsed/1000)/60;
+       // delta= (tiempo-interruption);
 
     }
 

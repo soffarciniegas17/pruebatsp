@@ -14,7 +14,7 @@
     android:background="@color/colorPrimaryDark"
     android:layout_height="180dp">
 
-    <com.worldsills.tspmobile.TextViewMelo
+    <TextView
         android:id="@+id/item_information_phase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
 
         android:textColor="@android:color/white"/>
 
-    <com.worldsills.tspmobile.TextViewMelo
+    <TextView
         android:id="@+id/item_information_porcentaje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

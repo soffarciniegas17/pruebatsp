@@ -32,7 +32,7 @@ public class FragmentFull extends Fragment {
     private GridView gridView;
     private AdapterInformation adapterInfo;
     private ArrayList<ItemInformation> itemInfo;
-    private final String[] FASES=getActivity().getResources().getStringArray(R.array.fases);
+    private String[] FASES;
 
 
     public FragmentFull() {
@@ -55,8 +55,8 @@ public class FragmentFull extends Fragment {
         }
 
         if (getActivity()!=null && isAdded()){
-            if (validarTiempoProyecto())ingresaTiempo();
-            else organiza();
+            FASES=getActivity().getResources().getStringArray(R.array.fases);
+            organiza();
         }
 
 
@@ -67,21 +67,27 @@ public class FragmentFull extends Fragment {
     //metodo con el fin de validar si al proyecto ya se le ha agredado un tiempo total
     public boolean validarTiempoProyecto(){
         DataBaseTSP db=new DataBaseTSP(getActivity());
-        Cursor cursor=db.proyecto(2,null,null,idProyec+"");
+        Cursor cursor=db.proyecto(4,null,0,idProyec+"");
+
         if (cursor.moveToFirst()){
-            if (cursor.getInt(2)==0)return true;
+            Toast.makeText(getActivity(),cursor.getInt(0)+"",Toast.LENGTH_SHORT).show();
+            if (cursor.getInt(0)==0){
+                return true;
+            }
             else {
-                tiempoTotalProyecto=cursor.getInt(2);
-                Toast.makeText(getActivity(),"null",Toast.LENGTH_SHORT).show();
+                tiempoTotalProyecto=cursor.getInt(0);
+                Toast.makeText(getActivity(),"ya tiene",Toast.LENGTH_SHORT).show();
+
+
             }
         }
-       return false;
+        return false;
+
     }
     public void ingresaTiempo(){
         final Dialog dialog=new Dialog(getActivity());
         dialog.setContentView(R.layout.dialog_ingresa_tiempo);
         dialog.setCanceledOnTouchOutside(false);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         ImageButton btonGuardar=dialog.findViewById(R.id.tiempo_guardar_bton);
         final EditText editTextTiempo=dialog.findViewById(R.id.tiempo_edittext);
@@ -93,13 +99,19 @@ public class FragmentFull extends Fragment {
                 if (editTextTiempo.getText().toString().equalsIgnoreCase("") ||
 
                         Integer.parseInt(editTextTiempo.getText().toString())<1){
+
+
+
                     Toast.makeText(getActivity(),"Ingresa tiempo",Toast.LENGTH_SHORT).show();
 
                 }else{
                     DataBaseTSP db=new DataBaseTSP(getActivity());
-                    db.proyecto(3,null,editTextTiempo.getText().toString(),idProyec+"");
+                    tiempoTotalProyecto=Integer.parseInt(editTextTiempo.getText().toString());
+                    db.proyecto(3,null,tiempoTotalProyecto,idProyec+"");
+
+                    Toast.makeText(getActivity(),"saves: "+tiempoTotalProyecto,Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
-                    organiza();
+                    cargaDatosTimeLog();
                 }
 
             }
@@ -115,7 +127,8 @@ public class FragmentFull extends Fragment {
         switch (posicion){
 
             case 0:
-                cargaDatosTimeLog();
+                if (validarTiempoProyecto())ingresaTiempo();
+                else cargaDatosTimeLog();
                 break;
             case 1:
                 cargaDatosDefecLogInjected();
@@ -139,7 +152,7 @@ public class FragmentFull extends Fragment {
 
     public void cargaDatosTimeLog(){
         DataBaseTSP db=new DataBaseTSP(getActivity());
-
+        double porcentaje;
 
         Cursor cursor=null;
         int delta=0;
@@ -147,13 +160,18 @@ public class FragmentFull extends Fragment {
         for (int i=0; i<FASES.length; i++){
 
             cursor=db.getTimelog(idProyec,FASES[i]);
-
-            if (cursor.moveToFirst()){
+            try{
+            if (cursor.moveToFirst() ){
                 do{
                     delta+=cursor.getInt(0);
                 }while (cursor.moveToNext());
             }
-           double porcentaje=delta*100/tiempoTotalProyecto;
+
+               porcentaje=delta*100/tiempoTotalProyecto;
+            }catch (Exception e){
+                porcentaje=0.00;
+            }
+
             itemInfo.add(new ItemInformation(porcentaje,FASES[i]));
 
         }
@@ -168,13 +186,18 @@ public class FragmentFull extends Fragment {
 
         for (int i=0; i<FASES.length;i++){
             cursor=db.getDefecLog(idProyec,FASES[i],null);
-
+            if (cursor==null)return;
             if (cursor.moveToFirst()){
                 do{
                     totalDefectFase+=1;
                 }while (cursor.moveToNext());
             }
-            double porcentaje=totalDefectFase*100/totalDefect;
+            double porcentaje;
+            try {
+                 porcentaje = totalDefectFase * 100 / totalDefect;
+            }catch (Exception e){
+                porcentaje=0.00;
+            }
             itemInfo.add(new ItemInformation(porcentaje,FASES[i]));
 
         }
@@ -190,13 +213,19 @@ public class FragmentFull extends Fragment {
 
         for (int i=0; i<FASES.length;i++){
             cursor=db.getDefecLog(idProyec,null,FASES[i]);
-
+            if (cursor==null)return;
             if (cursor.moveToFirst()){
                 do{
                     totalDefectFase+=1;
                 }while (cursor.moveToNext());
             }
-            double porcentaje=totalDefectFase*100/totalDefect;
+
+            double porcentaje;
+            try{
+                porcentaje=totalDefectFase*100/totalDefect;
+            }catch (Exception e){
+               porcentaje=0.00;
+            }
             itemInfo.add(new ItemInformation(porcentaje,FASES[i]));
 
         }
@@ -207,6 +236,7 @@ public class FragmentFull extends Fragment {
         DataBaseTSP db=new DataBaseTSP(getActivity());
         totalDefect=0;
         Cursor cursor=db.getDefecLog(idProyec,null,null);
+        if (cursor==null)return 0;
         if (cursor.moveToFirst()){
             do{
                 totalDefect++;

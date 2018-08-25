@@ -52,6 +52,8 @@
                 android:layout_width="200dp"
                 android:layout_height="41dp"
                 android:layout_gravity="center"
+                android:entries="@array/fases"
+                android:textAlignment="center"
                 android:hint="Pulse el boton para \n iniciar la fase"
                 android:textSize="18dp" />
 
@@ -77,6 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
+                android:layout_marginLeft="12dp"
                 android:layout_gravity="center"
                 android:hint="Pulse el boton para \n iniciar la fase"
                 />
@@ -104,6 +107,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
+                android:inputType="number"
                 android:layout_gravity="center"
                 android:hint="Agrega interrupciones"
                 />

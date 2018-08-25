@@ -52,7 +52,7 @@ public class DataBaseTSP extends SQLiteOpenHelper {
 
 
     }
-    public Cursor proyecto(int accion, String nombre, String tiempo, String idProyect){
+    public Cursor proyecto(int accion, String nombre, int tiempo, String idProyect){
         SQLiteDatabase db;
         ContentValues valores = new ContentValues();
         Cursor cursor=null;
@@ -73,11 +73,18 @@ public class DataBaseTSP extends SQLiteOpenHelper {
                     String[] selectionArgs={idProyect};*/
                     cursor=db.query("PROYECTOS",find,null,null,null,null,null);
                     break;
-                default:
+                case 4:
+                    db=getReadableDatabase();
+                    String[] colums={"TIEMPOTOTAL"};
+                    String selection="CODPROYEC" + " = ? ";
+                    String[] selectionArgs={idProyect};
+                    cursor=db.query("PROYECTOS",colums,selection,selectionArgs,null,null,null);
+                    break;
+                case 3:
                     db=getWritableDatabase();
                     valores.put("TIEMPOTOTAL",tiempo);
 
-                    String whereClouse = "CODPROYEC" + " = LIKE ";
+                    String whereClouse = "CODPROYEC" + " LIKE ? ";
                     String[] whereArs = {idProyect};
                     db.update("PROYECTOS", valores, whereClouse, whereArs);
                     break;

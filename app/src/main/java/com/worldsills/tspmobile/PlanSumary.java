@@ -45,7 +45,7 @@ public class PlanSumary extends AppCompatActivity {
 
         Bundle datos=getIntent().getExtras();
         if (datos!=null){
-            codigo=datos.getInt("codigo");
+            codigo=datos.getInt("CODIGO");
         }else{
             Toast.makeText(this,"sin codigo",Toast.LENGTH_SHORT).show();
         }
